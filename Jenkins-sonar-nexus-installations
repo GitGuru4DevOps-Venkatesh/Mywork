@@ -65,18 +65,11 @@ GCP to install jenkins:
 ---------------------
 https://askubuntu.com/questions/512867/unable-to-install-recover-jenkins-after-upgrading-from-ubuntu-12-04-to-14-04
 
-
-Sonarqube install:
---------------------
-
-https://digitalavenue.dev/Install-SonarQube-On-Ubuntu-Debian/
-
-
-  cd /opt
-  sudo curl -O https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.2.0.18542.zip
+cd /opt
+  sudo curl -O https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.3.0.34182.zip
   sudo apt-get install unzip
-  sudo unzip sonarqube-10.2.0.18542.zip -d /opt/
-  sudo mv /opt/sonarqube-10.2.0.18542/ /opt/sonarqube
+  sudo unzip sonarqube-8.3.0.34182.zip -d /opt/
+  sudo mv /opt/sonarqube-8.3.0.34182/ /opt/sonarqube
   cd /opt/sonarqube/
   sudo groupadd sonar
   sudo useradd -c "SonarQube - User" -d /opt/sonarqube/ -g sonar sonar
@@ -126,10 +119,10 @@ Install nexus
 
 1) sudo wget https://download.sonatype.com/nexus/3/latest-unix.tar.gz
 2) sudo tar -xvf latest-unix.tar.gz
-3) mv nexus-3.46.0-01 /opt/
+3) mv nexus-* /opt/
 4) mv sonatype-work/ /opt/
 5) cd /opt
-6) mv nexus-3.46.0-01/ nexus
+6) mv nexus-*/ nexus
 7) ###Create a user called Nexus####
      sudo adduser nexus
 
@@ -168,7 +161,8 @@ WantedBy=multi-user.target
      sudo systemctl start nexus
      sudo systemctl status nexus
 
-13) tail -f /opt/sonatype-work/nexus3/log/nexus.log
+13) Install plugin Pipeline Utility Steps
+14) tail -f /opt/sonatype-work/nexus3/log/nexus.log
 
 https://epma.medium.com/install-sonatype-nexus-3-on-ubuntu-20-04-lts-562f8ba20b98
 
