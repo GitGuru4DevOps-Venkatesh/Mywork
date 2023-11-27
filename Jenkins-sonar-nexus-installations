@@ -65,6 +65,8 @@ GCP to install jenkins:
 ---------------------
 https://askubuntu.com/questions/512867/unable-to-install-recover-jenkins-after-upgrading-from-ubuntu-12-04-to-14-04
 
+Install SonarQube:
+---------------------
 cd /opt
   sudo curl -O https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-8.3.0.34182.zip
   sudo apt-get install unzip
