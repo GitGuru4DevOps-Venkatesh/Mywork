@@ -1,7 +1,7 @@
 # Mywork
 Just remembering work_experience: **Jenkins Docker Workflow Persist, Backup, and Restore Jenkins Data**
 
-Certainly! Here's the explanation added after each command:
+Here's the explanation added after each command:
 
 ### Identify the Jenkins data directory:
 
