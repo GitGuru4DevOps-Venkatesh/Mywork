@@ -66,3 +66,43 @@ docker run -d -p 8080:8080 -p 50000:50000 -v jenkins_data:/var/jenkins_home --na
 Access Jenkins in your browser and verify that your jobs and configurations are present.
 
 **Explanation:** Open your web browser and go to `http://localhost:8080` to access Jenkins. Verify that your jobs and configurations are present, confirming that the data has been persisted successfully.
+--------------------------------------------install maven, java path setup in jenkins container----------------
+It looks like you're encountering permission issues when trying to run commands inside the Jenkins container as the `jenkins` user. The `jenkins` user typically does not have the necessary permissions to install packages or update the package lists.
+
+Here's how you can perform the installation steps inside the Jenkins container using the `root` user:
+
+```bash
+# Access the Jenkins container as root
+docker exec -u root -it 74a15a123a9c /bin/bash
+
+# Update package lists
+apt update
+
+# Install default-jdk
+apt install default-jdk -y
+```
+
+Note that you may encounter similar permission issues when trying to install packages as the `jenkins` user. Switching to the `root` user with `-u root` should resolve these issues.
+
+After installing Java, you can similarly install Maven:
+
+```bash
+# Install Maven
+apt install maven -y
+```
+
+Once you've installed Java and Maven, you can switch back to the `jenkins` user if needed:
+
+```bash
+su - jenkins
+```
+
+Make sure to save your Docker container changes if you want them to persist:
+
+```bash
+docker commit 74a15a123a9c your-updated-jenkins-image-tag
+```
+
+Replace `your-updated-jenkins-image-tag` with the tag you want to give to your updated Jenkins image.
+
+Keep in mind that these steps will modify the Jenkins container, and any changes made inside the container will be lost if the container is stopped and removed. For a more persistent setup, consider using volumes for storing Jenkins data.
